@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="assets/myredtradinglogo.png" type="image/x-icon">
+
     <title>Our Services | Myred Trading</title>
     <style>
         :root {
@@ -372,8 +374,9 @@
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">
-                <span class="logo-icon">⚙️</span>
-                <span class="logo-text">MYRED <span>TRADING</span></span>
+                <img src="assets/myredtradinglogo.png" alt="Myred Trading Logo" class="logo-icon" style="width: 70px; height: 70px;">
+                <!--<span class="logo-icon">⚙️</span>
+                <span class="logo-text">MYRED <span>TRADING</span></span>-->
             </a>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
@@ -550,4 +553,60 @@
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="values.html">Values</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 76 Irisway, Postdene, Postmasburg, 8420</p>
+                    <p><i class="fas fa-phone-alt"></i> 078 470 5836 | 060 365 0746</p>
+                    <p><i class="fas fa-envelope"></i> info@myredtrading.co.za</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Myred Trading (Pty) Ltd. All Rights Reserved. Reg No: 2013/060509/07</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Animate service cards on scroll
+        const serviceCards = document.querySelectorAll('.service-card');
+        
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        serviceCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            cardObserver.observe(card);
+        });
+    </script>
+</body>
+</html>
